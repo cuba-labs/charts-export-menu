@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://caption"
+        class="com.company.demo.web.ui.defaultexport.DefaultExport"
+        messagesPack="com.company.demo.web.ui.defaultexport"
+        xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd">
+    <dsContext>
+        <collectionDatasource id="valueDescriptionsDs"
+                              class="com.company.demo.entity.ValueDescription">
+            <query>
+                <![CDATA[select e from demo$ValueDescription e order by e.createTs]]>
+            </query>
+        </collectionDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout>
+        <chart:pieChart balloonText="[[title]] - [[percents]]%"
+                        datasource="valueDescriptionsDs"
+                        height="100%"
+                        labelText="[[]]"
+                        startAngle="312"
+                        titleField="description"
+                        valueField="value"
+                        width="100%">
+            <chart:legend autoMargins="false"
+                          marginRight="80"
+                          markerType="CIRCLE"
+                          position="RIGHT"
+                          valueText="[[]]"/>
+            <chart:colors>
+                <chart:color value="#446493"/>
+                <chart:color value="#5E3D2C"/>
+                <chart:color value="#D0A557"/>
+            </chart:colors>
+            <chart:export/>
+        </chart:pieChart>
+    </layout>
+</window>
